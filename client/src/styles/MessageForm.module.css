@@ -1,0 +1,9 @@
+.form {
+  display: flex;
+  width: 100%;
+  gap: 15px;
+}
+
+.form__input {
+  width: 100%;
+}

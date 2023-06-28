@@ -1,0 +1,61 @@
+* {
+  padding: 0;
+  margin: 0;
+  outline: 0;
+  box-sizing: border-box;
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  height: 100vh;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  padding: 50px 250px;
+  gap: 25px;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+}
+
+input {
+  font-size: 16px;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 5px 10px;
+  transition: 200ms all;
+}
+
+input:focus {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+button {
+  padding: 5px 10px;
+  font-size: 14px;
+  border: 0;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: 200ms all;
+}
+
+button:hover {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+button:active {
+  border-color: rgba(255, 255, 255, 0.2);
+}
