@@ -1,22 +1,21 @@
-import cors from 'cors';
-import express from 'express';
 import { Server } from 'socket.io';
 import dotenv from 'dotenv';
 
 dotenv.config();
 
-const app = express();
-app.use(cors());
-
-const server = app.listen(process.env.PORT, () => {
-  console.log(`Listening at port ${process.env.PORT}...`);
-});
-
-const io = new Server(server);
+const io = new Server(process.env.PORT);
 
 io.on('connection', (socket) => {
-  socket.on('message', ({ username, content }) => {
-    io.emit('message', { username, content, timeStamp: Date.now() });
+  socket.on('join', (room) => {
+    socket.join(room);
+  });
+
+  socket.on('message', ({ username, content, to }) => {
+    if (!to) {
+      return;
+    }
+
+    io.to(to).emit('message', { username, content, timeStamp: Date.now() });
   });
 });
 

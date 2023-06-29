@@ -1,6 +1,8 @@
 import { FormEvent, useState } from 'react';
 import styles from '../styles/MessageForm.module.css';
 import { Socket } from 'socket.io-client';
+import { useSelector } from 'react-redux';
+import { RootState } from '../app/store';
 
 interface Props {
   socket: Socket;
@@ -9,10 +11,11 @@ interface Props {
 const MessageForm = ({ socket }: Props) => {
   const [username, setName] = useState('');
   const [content, setContent] = useState('');
+  const connection = useSelector((state: RootState) => state.connection);
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
-    socket.emit('message', { username, content });
+    socket.emit('message', { username, content, to: connection.room });
     setContent('');
   };
 
