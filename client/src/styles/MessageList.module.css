@@ -10,6 +10,9 @@
 }
 
 .message {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   width: 100%;
   background-color: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -17,11 +20,21 @@
   padding: 10px 15px;
 }
 
+.message__header {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
 .message__content {
-  font-size: 18px;
+  font-size: 16px;
+  font-weight: 300;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 
 .message__time-stamp {
   font-size: 14px;
   opacity: 0.5;
+  font-weight: 300;
 }

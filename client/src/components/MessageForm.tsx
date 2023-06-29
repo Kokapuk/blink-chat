@@ -7,19 +7,30 @@ interface Props {
 }
 
 const MessageForm = ({ socket }: Props) => {
-  const [message, setMessage] = useState('');
+  const [username, setName] = useState('');
+  const [content, setContent] = useState('');
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
-    socket.emit('message', message);
-    setMessage('');
+    socket.emit('message', { username, content });
+    setContent('');
   };
 
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
       <input
-        value={message}
-        onChange={(e) => setMessage(e.target.value.trimStart())}
+        placeholder='Username'
+        value={username}
+        onChange={(e) => setName(e.currentTarget.value.trim())}
+        type='text'
+        required
+        minLength={3}
+        maxLength={16}
+      />
+      <input
+        placeholder='Message'
+        value={content}
+        onChange={(e) => setContent(e.target.value.trimStart())}
         className={styles.form__input}
         type='text'
         required
